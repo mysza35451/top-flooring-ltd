@@ -15,21 +15,25 @@ const Products = () => {
       title: "Solid Wood Flooring",
       description: "Classic, durable, and elegant - perfect for creating timeless interiors. Our solid wood floors are sourced from premium suppliers and can be sanded and refinished multiple times, making them a long-lasting investment for your home.",
       image: solidWood,
+      link: "/products/solid-wood",
     },
     {
       title: "Engineered Wood Flooring",
       description: "Stability meets style - ideal for modern London homes and apartments. Engineered wood offers the beauty of real wood with enhanced dimensional stability, making it perfect for areas with underfloor heating or varying humidity levels.",
       image: engineeredWood,
+      link: "/products/engineered-wood",
     },
     {
       title: "Laminate Flooring",
       description: "Affordable, versatile, and easy to maintain - perfect for busy households. Our laminate floors offer realistic wood-look finishes with excellent durability and scratch resistance, making them ideal for high-traffic areas.",
       image: laminate,
+      link: "/products/laminate",
     },
     {
       title: "Parquet Flooring",
       description: "Luxury patterns and stunning visual appeal for truly exceptional spaces. From classic herringbone to contemporary chevron patterns, parquet flooring adds character and sophistication to any room.",
       image: parquet,
+      link: "/products/parquet",
     },
   ];
 
@@ -79,7 +83,7 @@ const Products = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {products.map((product, index) => (
-              <ProductCard key={index} {...product} link="/contact" />
+              <ProductCard key={index} {...product} />
             ))}
           </div>
         </div>

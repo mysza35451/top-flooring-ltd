@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +18,22 @@ const Navigation = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Products & Services", path: "/products" },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" },
+  ];
+
+  const productCategories = [
+    { name: "Solid Wood Flooring", path: "/products/solid-wood" },
+    { name: "Engineered Wood Flooring", path: "/products/engineered-wood" },
+    { name: "Laminate Flooring", path: "/products/laminate" },
+    { name: "Parquet Flooring", path: "/products/parquet" },
+  ];
+
+  const featuredProducts = [
+    { name: "Oak Herringbone Classic", path: "/products/oak-herringbone-classic" },
+    { name: "Walnut Wide Plank", path: "/products/walnut-wide-plank" },
+    { name: "Maple Natural Finish", path: "/products/maple-natural-finish" },
+    { name: "Smoked Oak Heritage", path: "/products/smoked-oak-heritage" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -47,6 +68,72 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            
+            {/* Products Dropdown */}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className={`smooth-transition font-medium ${
+                    location.pathname.startsWith("/products")
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }`}>
+                    Products & Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-[600px] grid-cols-2">
+                      <div>
+                        <h4 className="font-heading font-bold text-sm mb-3 text-primary">Categories</h4>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                to="/products"
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-medium leading-none">All Products</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  View our complete range
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          {productCategories.map((category) => (
+                            <li key={category.path}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={category.path}
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  <div className="text-sm font-medium leading-none">{category.name}</div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-bold text-sm mb-3 text-primary">Featured Products</h4>
+                        <ul className="space-y-2">
+                          {featuredProducts.map((product) => (
+                            <li key={product.path}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={product.path}
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  <div className="text-sm font-medium leading-none">{product.name}</div>
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           {/* CTA Button */}
@@ -86,6 +173,29 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            
+            {/* Mobile Products Submenu */}
+            <div className="border-t border-border mt-2 pt-2">
+              <div className="px-4 py-3 font-medium text-foreground">Products & Services</div>
+              <Link
+                to="/products"
+                onClick={() => setIsOpen(false)}
+                className="block py-2 px-8 text-sm text-muted-foreground hover:bg-muted smooth-transition"
+              >
+                All Products
+              </Link>
+              {productCategories.map((category) => (
+                <Link
+                  key={category.path}
+                  to={category.path}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2 px-8 text-sm text-muted-foreground hover:bg-muted smooth-transition"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+            
             <div className="px-4 pt-4 space-y-3">
               <a
                 href="tel:+442012345678"

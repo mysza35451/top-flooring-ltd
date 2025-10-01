@@ -10,6 +10,18 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+// Category Pages
+import SolidWood from "./pages/products/SolidWood";
+import EngineeredWood from "./pages/products/EngineeredWood";
+import Laminate from "./pages/products/Laminate";
+import Parquet from "./pages/products/Parquet";
+
+// Product Detail Pages
+import OakHerringbone from "./pages/products/OakHerringbone";
+import WalnutWidePlank from "./pages/products/WalnutWidePlank";
+import MapleNatural from "./pages/products/MapleNatural";
+import SmokedOakHeritage from "./pages/products/SmokedOakHeritage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -24,6 +36,19 @@ const App = () => (
           <Route path="/products" element={<Products />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Category Pages */}
+          <Route path="/products/solid-wood" element={<SolidWood />} />
+          <Route path="/products/engineered-wood" element={<EngineeredWood />} />
+          <Route path="/products/laminate" element={<Laminate />} />
+          <Route path="/products/parquet" element={<Parquet />} />
+          
+          {/* Product Detail Pages */}
+          <Route path="/products/oak-herringbone-classic" element={<OakHerringbone />} />
+          <Route path="/products/walnut-wide-plank" element={<WalnutWidePlank />} />
+          <Route path="/products/maple-natural-finish" element={<MapleNatural />} />
+          <Route path="/products/smoked-oak-heritage" element={<SmokedOakHeritage />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
