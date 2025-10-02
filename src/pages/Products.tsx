@@ -71,9 +71,12 @@ const Products = () => {
             <h1 className="font-heading font-bold text-4xl md:text-5xl mb-6 text-foreground">
               Our Range of Wooden Floors
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
               Discover flooring that suits every style, budget, and lifestyle
             </p>
+            <Button asChild size="lg" variant="outline">
+              <Link to="/products/all">View All Products</Link>
+            </Button>
           </div>
         </div>
       </section>

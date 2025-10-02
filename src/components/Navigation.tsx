@@ -83,17 +83,30 @@ const Navigation = () => {
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-6 w-[600px] grid-cols-2">
                       <div>
-                        <h4 className="font-heading font-bold text-sm mb-3 text-primary">Categories</h4>
+                        <h4 className="font-heading font-bold text-sm mb-3 text-primary">Browse Products</h4>
                         <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                to="/products/all"
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-medium leading-none">All Products</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  Browse our complete catalogue
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
                           <li>
                             <NavigationMenuLink asChild>
                               <Link
                                 to="/products"
                                 className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                               >
-                                <div className="text-sm font-medium leading-none">All Products</div>
+                                <div className="text-sm font-medium leading-none">Products & Services</div>
                                 <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                  View our complete range
+                                  View our range and services
                                 </p>
                               </Link>
                             </NavigationMenuLink>
@@ -106,23 +119,6 @@ const Navigation = () => {
                                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
                                   <div className="text-sm font-medium leading-none">{category.name}</div>
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-heading font-bold text-sm mb-3 text-primary">Featured Products</h4>
-                        <ul className="space-y-2">
-                          {featuredProducts.map((product) => (
-                            <li key={product.path}>
-                              <NavigationMenuLink asChild>
-                                <Link
-                                  to={product.path}
-                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                >
-                                  <div className="text-sm font-medium leading-none">{product.name}</div>
                                 </Link>
                               </NavigationMenuLink>
                             </li>
@@ -178,11 +174,18 @@ const Navigation = () => {
             <div className="border-t border-border mt-2 pt-2">
               <div className="px-4 py-3 font-medium text-foreground">Products & Services</div>
               <Link
-                to="/products"
+                to="/products/all"
                 onClick={() => setIsOpen(false)}
                 className="block py-2 px-8 text-sm text-muted-foreground hover:bg-muted smooth-transition"
               >
                 All Products
+              </Link>
+              <Link
+                to="/products"
+                onClick={() => setIsOpen(false)}
+                className="block py-2 px-8 text-sm text-muted-foreground hover:bg-muted smooth-transition"
+              >
+                Products & Services
               </Link>
               {productCategories.map((category) => (
                 <Link

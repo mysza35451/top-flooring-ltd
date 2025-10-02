@@ -99,7 +99,7 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild className="hero-gradient text-background hover:opacity-90 smooth-transition">
-              <Link to="/products">Browse Our Floors</Link>
+              <Link to="/products/all">Browse All Products</Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-background/10 backdrop-blur-sm border-background text-background hover:bg-background hover:text-foreground smooth-transition">
               <Link to="/contact">Request a Free Quote</Link>
